@@ -1,4 +1,4 @@
-# this file will run from the terminal (see code inside server.py to get code that accepts arguments in file)
+
 import requests
 import hashlib
 import sys
@@ -23,7 +23,7 @@ def get_password_leaks_count(hashes, hash_to_check):
 
 def pwned_api_check(password):
     sha1password = hashlib.sha1(password.encode('utf-8')).hexdigest().upper()
-    first5_char, tail = sha1password[:5], sha1password[5:]
+    first5_char, tail = sha1password[:5], sha1password[5:]  # K-anonymity
     response = request_api_data(first5_char)
     return get_password_leaks_count(response, tail)
 
